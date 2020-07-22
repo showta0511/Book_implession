@@ -1,2 +1,7 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+
+    <table>
+        <%=@book.title%>
+        <%=@book.implession%>
+        <%=link_to "編集", edit_book_path(@book)%>
+        <%=link_to "削除", @book,method: :delete, data:{confirm: "投稿を削除しますよろしいですか？"}%>
+    </table>

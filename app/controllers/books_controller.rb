@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before action :set_up_book,only:[:show,:edit,:update,:destroy]
+  before_action :set_up_book,only:[:show,:edit,:update,:destroy]
   def index
     @books=Book.all
   end
@@ -12,16 +12,28 @@ class BooksController < ApplicationController
   end
   
   def create
-    
+    @book=Book.new(book_parameter)
+    if @book.save
+      redirect_to @book
+    else
+      render :new
+    end
   end
 
   def edit
   end
   
-  def updated
+  def update
+    if @book.update(book_parameter)
+      redirect_to @book
+    else
+      render :new
+    end
   end
   
   def destroy
+    @book.destroy
+    redirect_to @book
   end
   
   private

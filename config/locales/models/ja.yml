@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      book: 本
+    attributes:
+      book:
+        title: タイトル
+        implession: 感想
+        created_at: 作成日時
+        updated_at: 更新日時
