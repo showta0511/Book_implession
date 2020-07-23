@@ -9,8 +9,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header>
-    <%=link_to "一覧", books_path%>
-    <%=link_to "新規投稿", new_book_path%>
+    <ul>
+    <%if current_user%>
+      <li><%=link_to "一覧", books_path%></li>
+      <li><%=link_to "新規投稿", new_book_path%></li>
+      
+      <li><%=link_to "ログアウト", logout_path,method: :delete%></li>
+    <%else%>
+      <li><%=link_to "ログイン", login_path%></li>
+    <%end%>
+    </ul>
   </header>
   <body>
     <%= yield %>
