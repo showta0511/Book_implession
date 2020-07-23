@@ -1,10 +1,15 @@
 class BooksController < ApplicationController
-  before_action :set_up_book,only:[:show,:edit,:update,:destroy]
+  before_action :set_book,only:[:edit,:update,:destroy]
   def index
     @books=Book.all
   end
+  
+  def mine
+  
+  end
 
   def show
+    @book=Book.find(params[:id])
   end
 
   def new
@@ -12,7 +17,7 @@ class BooksController < ApplicationController
   end
   
   def create
-    @book=Book.new(book_parameter)
+    @book=current_user.books.new(book_parameter)
     if @book.save
       redirect_to @book
     else
@@ -41,7 +46,8 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title,:implession)
   end
   
-  def set_up_book
-    @book=Book.find(params[:id])
+  def set_book
+    @book=current_user.books.find(params[:id])
   end
+
 end
