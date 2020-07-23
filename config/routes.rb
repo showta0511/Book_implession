@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get '/login',to:'sessions#new'
-  post '/login',to:'sessions#create'
-  delete '/logout',to:'sessions#destroy'
-  resources 'users'
-  root to:'books#index'
+  root to:'books#index' 
+    get '/login',to:'sessions#new'
+    post '/login',to:'sessions#create'
+    delete '/logout',to:'sessions#destroy'
+    resources 'users'
+  
+  
   resources 'books' do
     get  'mine'
   end
