@@ -1,7 +1,8 @@
 class BooksController < ApplicationController
   before_action :set_book,only:[:edit,:update,:destroy]
+  skip_before_action :login_required,only:[:index]
   def index
-    @books=Book.all
+    @books=Book.all.order(created_at: :desc)
   end
   
   def mine
@@ -19,7 +20,7 @@ class BooksController < ApplicationController
   def create
     @book=current_user.books.new(book_parameter)
     if @book.save
-      redirect_to @book
+      redirect_to books_path
     else
       render :new
     end
