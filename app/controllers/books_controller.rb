@@ -22,7 +22,7 @@ class BooksController < ApplicationController
   def create
     @book=current_user.books.new(book_parameter)
     if @book.save
-      redirect_to books_path
+      redirect_to books_path,notice:"ツイートしました"
     else
       render :new
     end
@@ -35,13 +35,13 @@ class BooksController < ApplicationController
     if @book.update(book_parameter)
       redirect_to @book
     else
-      render :new
+      render :new,notice:"ツイートを編集"
     end
   end
   
   def destroy
     @book.destroy
-    redirect_to @book
+    redirect_to @book,notice:"ツイートを削除"
   end
   
   private
