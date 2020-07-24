@@ -1,6 +1,18 @@
-<%@books.each do |book|%>
-    <table>
-        <%=link_to book.title,book%>
-        <%=book.implession%>
-<%end%>
-    </table>
+
+    
+<!-- Note a custom script is used to activate toasts:
+$('.toast').toast();
+-->
+    <%@books.each do |book|%>
+<div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <strong class="mr-auto"><%=link_to book.title, book%></strong>
+    <small><%=book.created_at%></small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+    </button>
+  </div>
+  <div class="toast-body">
+    <%=book.implession%>
+  </div>
+</div>
+    <%end%>
