@@ -14,9 +14,11 @@
       
     <%if current_user%>
       <li><%=link_to "新規投稿", new_book_path%></li>
+      <li><%=link_to "プロフィール", mine_books_path%></li>
       <li><%=link_to "ログアウト", logout_path,method: :delete%></li>
     <%else%>
       <li><%=link_to "ログイン",login_path%></li>
+      <li><%=link_to "ユーザー新規登録",new_user_path%></li>
     <%end%>
     </ul>
   </header>

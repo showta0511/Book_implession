@@ -6,11 +6,13 @@ class BooksController < ApplicationController
   end
   
   def mine
-  
+    @books=current_user.books.order(created_at: :desc)
+    @user=current_user
   end
 
   def show
     @book=Book.find(params[:id])
+    @user=current_user
   end
 
   def new

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to:'books#index' 
+  root to:'users#index' 
     get '/login',to:'sessions#new'
     post '/login',to:'sessions#create'
     delete '/logout',to:'sessions#destroy'
@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   
   
   resources 'books' do
-    get  'mine'
+    collection do
+    get :mine
+  end
   end
   
 end
