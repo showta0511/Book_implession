@@ -1,9 +1,10 @@
 
     <table>
+        
         <%=@book.title%>
         <%=@book.implession%>
         <% if logger? && @book.user == current_user%>
-        <%=link_to "編集", edit_book_path(@book)%>
-        <%=link_to "削除", @book,method: :delete, data:{confirm: "投稿を削除しますよろしいですか？"}%>
+            <%=link_to "編集", edit_book_path(@book)%>
+            <%=link_to "削除", @book,method: :delete, data:{confirm: "投稿を削除しますよろしいですか？"}%>
         <%end%>
     </table>
