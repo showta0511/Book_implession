@@ -46,7 +46,7 @@ class BooksController < ApplicationController
   
   private
   def book_parameter
-    params.require(:book).permit(:title,:implession)
+    params.require(:book).permit(:title,:implession,:img,:remove_img)
   end
   
   def set_book
